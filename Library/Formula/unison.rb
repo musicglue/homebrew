@@ -21,5 +21,8 @@ class Unison < Formula
     system "make ./mkProjectInfo"
     system "make UISTYLE=text"
     bin.install 'unison'
+
+    inreplace "fsmonitor.py", '#!/usr/bin/python', '#!/usr/local/bin/python'
+    bin.install 'fsmonitor.py' if File.exist? 'fsmonitor.py'
   end
 end
